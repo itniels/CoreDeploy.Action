@@ -1,13 +1,26 @@
 name: 'CoreDeploy'
 description: 'Uploads a package to CoreDeploy server'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  appid:
+    description: 'ID of the app in CoreDeploy'
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+    default: ''
+  version:
+    description: 'version of the app'
+    required: true
+    default: ''
+  artifact:
+    description: 'Path to the artifact zip file'
+    required: true
+    default: ''
+  url:
+    description: 'Ingress server URL'
+    required: true
+    default: ''
+  key:
+    description: 'Ingress key'
+    required: true
+    default: ''
 runs:
   using: 'node12'
   main: 'dist/index.js'
