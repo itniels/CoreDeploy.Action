@@ -1,0 +1,13 @@
+name: 'CoreDeploy'
+description: 'Uploads a package to CoreDeploy server'
+inputs:
+  milliseconds:  # id of input
+    description: 'number of milliseconds to wait'
+    required: true
+    default: '1000'
+outputs:
+  time: # output will be available to future steps
+    description: 'The current time after waiting'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
