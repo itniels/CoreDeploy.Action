@@ -3,7 +3,7 @@ const FormData = require('form-data');
 const fs = require('fs');
 const {promisify} = require('util');
 
-async function artifact(meta, artifactPath, url, key){
+async function uploadArtifact(meta, artifactPath, url, key){
 	core.info('Starting upload of artifact');
 	try {
 		// Create meta form
@@ -96,4 +96,4 @@ async function jsonToMap(jsonStr){
 	return strMap;
 }
 
-module.exports = artifact;
+module.exports = uploadArtifact;

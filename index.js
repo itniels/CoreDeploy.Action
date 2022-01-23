@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const upload = require('artifact');
+const uploadArtifact = require('./uploadArtifact');
 
 async function run() {
 	try {
@@ -30,7 +30,7 @@ async function run() {
 		core.info('Artifact Path', inputArtifactPath);
 
 		// Submit package+meta to CoreDeploy
-		upload.artifact(meta, inputArtifactPath, inputUrl, inputKey);
+		uploadArtifact(meta, inputArtifactPath, inputUrl, inputKey);
 	} 
 	catch (error) {
 		core.setFailed(error.message);
