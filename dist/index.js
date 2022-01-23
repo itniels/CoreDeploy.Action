@@ -8299,18 +8299,18 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
-/***/ 2877:
+/***/ 6320:
 /***/ ((module) => {
 
-module.exports = eval("require")("encoding");
+module.exports = eval("require")("artifact");
 
 
 /***/ }),
 
-/***/ 2486:
+/***/ 2877:
 /***/ ((module) => {
 
-module.exports = eval("require")("uploadArtifact");
+module.exports = eval("require")("encoding");
 
 
 /***/ }),
@@ -8478,7 +8478,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
-const upload = __nccwpck_require__(2486);
+const upload = __nccwpck_require__(6320);
 
 async function run() {
 	try {
