@@ -12,11 +12,11 @@ async function run() {
 		const inputKey = core.getInput('key');
 		// Get values from context
 		const buildRun = github.context.run_id;
-		core.info('buildRun', buildRun);
+		core.info('buildRun: ' + buildRun);
 		const commitSha = github.context.sha;
-		core.info('commitSha', commitSha);
+		core.info('commitSha: ' + commitSha);
 		const commitMessage = github.context.event.head_commit.message;
-		core.info('commitMessage', commitMessage);
+		core.info('commitMessage: ' + commitMessage);
 
 		// Create package meta data JSON
 		const meta = {
@@ -28,9 +28,9 @@ async function run() {
 		};
 
 		// Log
-		core.info('Meta created', meta);
-		core.info('URL', inputUrl);
-		core.info('Artifact Path', inputArtifactPath);
+		core.info('Meta created: ' + meta);
+		core.info('URL: ' + inputUrl);
+		core.info('Artifact Path: ' + inputArtifactPath);
 
 		// Submit package+meta to CoreDeploy
 		uploadArtifact(meta, inputArtifactPath, inputUrl, inputKey);
