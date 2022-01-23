@@ -15,6 +15,9 @@ async function run() {
 		const token = core.getInput('token');
 		const octokit = github.getOctokit(token);
 
+		const ctx = JSON.stringify(github.context);
+		core.info(ctx);
+
 		const commitSha = github.context.sha;
 		core.info('commitSha: ' + commitSha);
 
