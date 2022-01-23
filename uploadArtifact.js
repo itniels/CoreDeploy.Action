@@ -96,4 +96,4 @@ async function jsonToMap(jsonStr){
 	return strMap;
 }
 
-module.exports = uploadArtifact;
+module.exports = artifact;
