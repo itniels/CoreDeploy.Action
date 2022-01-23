@@ -14345,13 +14345,13 @@ async function run() {
 		const token = core.getInput('token');
 		const octokit = github.getOctokit(token);
 
-		const ctx = JSON.stringify(github.context);
+		const ctx = JSON.stringify(github);
 		core.info(ctx);
 
 		const commitSha = github.context.sha;
 		core.info('commitSha: ' + commitSha);
 
-		const buildRun = github.context.run_id;
+		const buildRun = github.context.runNumber;
 		core.info('buildRun: ' + buildRun);
 
 		const commitMessage = github.context.event.head_commit.message;
