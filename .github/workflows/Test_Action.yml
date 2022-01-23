@@ -1,0 +1,25 @@
+name: Test_Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create a dummy package
+        run: | 
+          mkdir /test
+          dd if=/dev/zero of=/test/artifact.zip  bs=5M  count=1
+
+      - name: Core Deploy
+        uses: itniels/CoreDeploy.Action@main
+        with:
+          appid: 21
+          version: 1.1.${{github.run_id}}
+          artifact: /test/artifact.zip
+          url: ${{SECRETS.COREDEPLOY_URL}}
+          key: ${{SECRETS.COREDEPLOY_INGRESSKEY}}
