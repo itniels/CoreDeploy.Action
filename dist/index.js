@@ -14342,8 +14342,11 @@ async function run() {
 		const inputKey = core.getInput('key');
 		// Get values from context
 		const buildRun = github.context.run_id;
+		core.info('buildRun', buildRun);
 		const commitSha = github.context.sha;
+		core.info('commitSha', commitSha);
 		const commitMessage = github.context.event.head_commit.message;
+		core.info('commitMessage', commitMessage);
 
 		// Create package meta data JSON
 		const meta = {
