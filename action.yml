@@ -21,6 +21,10 @@ inputs:
     description: 'Ingress key'
     required: true
     default: ''
+  token:
+    description: 'GitHub token'
+    required: true
+    default: ''
 runs:
   using: 'node12'
   main: 'dist/index.js'

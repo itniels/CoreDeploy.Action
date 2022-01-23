@@ -14340,11 +14340,17 @@ async function run() {
 		const inputArtifactPath = core.getInput('artifact');
 		const inputUrl = core.getInput('url');
 		const inputKey = core.getInput('key');
+		
 		// Get values from context
-		const buildRun = github.context.run_id;
-		core.info('buildRun: ' + buildRun);
+		const token = core.getInput('token');
+		const octokit = github.getOctokit(token);
+
 		const commitSha = github.context.sha;
 		core.info('commitSha: ' + commitSha);
+
+		const buildRun = github.context.run_id;
+		core.info('buildRun: ' + buildRun);
+
 		const commitMessage = github.context.event.head_commit.message;
 		core.info('commitMessage: ' + commitMessage);
 
