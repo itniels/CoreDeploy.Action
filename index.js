@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const upload = require('./uploadArtifact');
+const upload = require('uploadArtifact');
 
 async function run() {
 	try {
