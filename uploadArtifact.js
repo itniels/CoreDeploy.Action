@@ -3,20 +3,20 @@ const FormData = require('form-data');
 const fs = require('fs');
 const {promisify} = require('util');
 
-function artifact(meta, artifactPath, url, key){
+async function artifact(meta, artifactPath, url, key){
 	core.info('Starting upload of artifact');
 	try {
 		// Create meta form
 		const forms = {
-			key = key,
-			config = meta
+			key: key,
+			config: meta
 		};
 		const formsMap = jsonToMap(forms);
 		core.info('Done creating formsMap', formsMap);
 
 		// Create file form
 		const fileForms = {
-			file = artifactPath
+			file: artifactPath
 		};
 		const fileFormsMap = jsonToMap(fileForms);
 		core.info('Done creating fileForms', fileForms);
@@ -50,7 +50,7 @@ function artifact(meta, artifactPath, url, key){
 	}
 }
 
-function buildForm(forms, fileForms) {
+async function buildForm(forms, fileForms) {
 	const form = new FormData();
 		for (const [key, value] of forms)
 			form.append(key, value);
@@ -86,7 +86,7 @@ async function uploadFile(url, forms, fileForms) {
 		return axios.post(url, form, {headers: headers,maxContentLength: Infinity})
 }
 
-function jsonToMap(jsonStr){
+async function jsonToMap(jsonStr){
 	let obj = JSON.parse(jsonStr);
 	let strMap = new Map();
 	

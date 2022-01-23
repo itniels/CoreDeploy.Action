@@ -17,11 +17,11 @@ async function run() {
 
 		// Create package meta data JSON
 		const meta = {
-			Version = inputVersion,
-			AppId = inputAppId,
-			BuildRun = buildRun,
-			Commit = commitSha,
-			CommitMessage = commitMessage
+			Version: inputVersion,
+			AppId: inputAppId,
+			BuildRun: buildRun,
+			Commit: commitSha,
+			CommitMessage: commitMessage
 		};
 
 		// Log
