@@ -10,22 +10,11 @@ async function run() {
 		const inputArtifactPath = core.getInput('artifact');
 		const inputUrl = core.getInput('url');
 		const inputKey = core.getInput('key');
+		const inputMessage = core.getInput('message');
 		
 		// Get values from context
-		const token = core.getInput('token');
-		const octokit = github.getOctokit(token);
-
-		const ctx = JSON.stringify(github);
-		core.info(ctx);
-
 		const commitSha = github.context.sha;
-		core.info('commitSha: ' + commitSha);
-
 		const buildRun = github.context.runNumber;
-		core.info('buildRun: ' + buildRun);
-
-		const commitMessage = github.context.event.head_commit.message;
-		core.info('commitMessage: ' + commitMessage);
 
 		// Create package meta data JSON
 		const meta = {
@@ -33,7 +22,7 @@ async function run() {
 			AppId: inputAppId,
 			BuildRun: buildRun,
 			Commit: commitSha,
-			CommitMessage: commitMessage
+			CommitMessage: inputMessage
 		};
 
 		// Log

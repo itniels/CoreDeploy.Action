@@ -9,6 +9,10 @@ inputs:
     description: 'version of the app'
     required: true
     default: ''
+  message:
+    description: 'Commit message usually'
+    required: true
+    default: ''
   artifact:
     description: 'Path to the artifact zip file'
     required: true
@@ -19,10 +23,6 @@ inputs:
     default: ''
   key:
     description: 'Ingress key'
-    required: true
-    default: ''
-  token:
-    description: 'GitHub token'
     required: true
     default: ''
 runs:
