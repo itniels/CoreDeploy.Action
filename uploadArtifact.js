@@ -1,3 +1,4 @@
+const core = require('@actions/core');
 const axios = require('axios');
 const FormData = require('form-data');
 const fs = require('fs');
@@ -5,6 +6,7 @@ const {promisify} = require('util');
 
 async function uploadArtifact(meta, artifactPath, url, key){
 	core.info('Starting upload of artifact');
+
 	try {
 		// Create meta form
 		const forms = {

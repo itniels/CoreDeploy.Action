@@ -14041,6 +14041,7 @@ function wrappy (fn, cb) {
 /***/ 789:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
+const core = __nccwpck_require__(2186);
 const axios = __nccwpck_require__(6545);
 const FormData = __nccwpck_require__(4334);
 const fs = __nccwpck_require__(5747);
@@ -14048,6 +14049,7 @@ const {promisify} = __nccwpck_require__(1669);
 
 async function uploadArtifact(meta, artifactPath, url, key){
 	core.info('Starting upload of artifact');
+
 	try {
 		// Create meta form
 		const forms = {
@@ -14356,7 +14358,7 @@ async function run() {
 		};
 
 		// Log
-		core.info('Meta created: ' + meta);
+		core.info('Meta created: ' + JSON.stringify(meta));
 		core.info('URL: ' + inputUrl);
 		core.info('Artifact Path: ' + inputArtifactPath);
 

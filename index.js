@@ -26,7 +26,7 @@ async function run() {
 		};
 
 		// Log
-		core.info('Meta created: ' + meta);
+		core.info('Meta created: ' + JSON.stringify(meta));
 		core.info('URL: ' + inputUrl);
 		core.info('Artifact Path: ' + inputArtifactPath);
 
