@@ -11,7 +11,7 @@ async function uploadArtifact(meta, artifactPath, url, key){
 		// Create meta form
 		const forms = {
 			key: key,
-			config: meta
+			config: JSON.stringify(meta)
 		};
 		const formsMap = objToStringMap(forms);
 		core.info('Done creating formsMap');
@@ -51,15 +51,26 @@ async function uploadArtifact(meta, artifactPath, url, key){
 	}
 }
 
+async function uploadFile(url, forms, fileForms) {
+	const form = buildForm(forms, fileForms);
+	const headers = await getFormHeaders(form);
+
+	return axios.post(url, form, {
+		headers: headers, 
+		maxContentLength: Infinity
+	});
+}
+
 async function buildForm(forms, fileForms) {
 	const form = new FormData();
-		for (const [key, value] of forms)
-			form.append(key, value);
 
-		for (const [key, value] of fileForms)
-			form.append(key, fs.createReadStream(value));
+	for (const [key, value] of forms)
+		form.append(key, value);
 
-		return form
+	for (const [key, value] of fileForms)
+		form.append(key, fs.createReadStream(value));
+
+	return form
 }
 
 async function getFormHeaders (form) {
@@ -70,19 +81,6 @@ async function getFormHeaders (form) {
 		...form.getHeaders(),
 		'Content-Length': len
 	}
-}
-
-async function uploadFile(url, forms, fileForms) {
-		console.log(url);
-		console.log(forms);
-		console.log(fileForms);
-
-		const form = buildForm(forms, fileForms);
-		const headers = await getFormHeaders(form);
-
-		console.log(headers);
-
-		return axios.post(url, form, {headers: headers,maxContentLength: Infinity})
 }
 
 function objToStringMap(obj){
