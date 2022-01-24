@@ -64,11 +64,13 @@ async function uploadFile(url, forms, fileForms) {
 async function buildForm(forms, fileForms) {
 	const form = new FormData();
 
-	for (const [key, value] of forms)
+	for (const [key, value] of forms){
 		form.append(key, value);
+	}
 
-	for (const [key, value] of fileForms)
+	for (const [key, value] of fileForms){
 		form.append(key, fs.createReadStream(value));
+	}
 
 	return form
 }
@@ -87,7 +89,7 @@ function objToStringMap(obj){
 	let strMap = new Map();
 
 	for (let k of Object.keys(obj))
-	  strMap.set(k,obj[k]);
+	  strMap.set(k, obj[k]);
 
 	return strMap;
 }
