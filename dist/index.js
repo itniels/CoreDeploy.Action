@@ -14054,7 +14054,7 @@ async function uploadArtifact(meta, artifactPath, url, key){
 		// Create meta form
 		const forms = {
 			key: key,
-			config: JSON.stringify(meta)
+			config: getEncodedConfig(meta)
 		};
 		const formsMap = objToStringMap(forms);
 		core.info('Done creating formsMap');
@@ -14135,6 +14135,15 @@ function objToStringMap(obj){
 	  strMap.set(k, obj[k]);
 
 	return strMap;
+}
+
+function getEncodedConfig(meta){
+	const json = JSON.stringify(meta);
+	const encoded = json.toString('base64');
+
+	core.info('Encoded config: ' + encoded);
+
+	return encoded;
 }
 
 module.exports = uploadArtifact;
