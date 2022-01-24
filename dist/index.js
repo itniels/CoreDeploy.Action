@@ -14139,7 +14139,8 @@ function objToStringMap(obj){
 
 function getEncodedConfig(meta){
 	const json = JSON.stringify(meta);
-	const encoded = json.toString('base64');
+	const buffer = Buffer.From(json);
+	const encoded = buffer.toString('base64');
 
 	core.info('Encoded config: ' + encoded);
 
