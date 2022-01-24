@@ -24,4 +24,3 @@ jobs:
           message: ${{github.event.head_commit.message}}
           url: ${{secrets.COREDEPLOY_URL}}
           key: ${{secrets.COREDEPLOY_INGRESSKEY}}
-          token: ${{github.token}}
