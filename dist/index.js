@@ -14056,15 +14056,15 @@ async function uploadArtifact(meta, artifactPath, url, key){
 			key: key,
 			config: meta
 		};
-		const formsMap = jsonToMap(forms);
-		core.info('Done creating formsMap', formsMap);
+		const formsMap = objToStringMap(forms);
+		core.info('Done creating formsMap');
 
 		// Create file form
 		const fileForms = {
 			file: artifactPath
 		};
-		const fileFormsMap = jsonToMap(fileForms);
-		core.info('Done creating fileForms', fileForms);
+		const fileFormsMap = objToStringMap(fileForms);
+		core.info('Done creating fileForms');
 
 		// http request
 		const response = await uploadFile(url, formsMap, fileFormsMap);
@@ -14080,7 +14080,7 @@ async function uploadArtifact(meta, artifactPath, url, key){
 		};
 
 		const consoleOutputJSON = JSON.stringify(outputObject, undefined, 2);
-		console.log(consoleOutputJSON);
+		core.info(consoleOutputJSON);
 
 		if (statusCode >= 400) {
 			core.setFailed(`HTTP request failed with status code: ${statusCode}`);
@@ -14090,7 +14090,6 @@ async function uploadArtifact(meta, artifactPath, url, key){
 		}
 	} 
 	catch (error) {
-			console.log(error);
 			core.setFailed(error.message);
 	}
 }
@@ -14102,8 +14101,6 @@ async function buildForm(forms, fileForms) {
 
 		for (const [key, value] of fileForms)
 			form.append(key, fs.createReadStream(value));
-
-		console.log(form);
 
 		return form
 }
@@ -14131,12 +14128,11 @@ async function uploadFile(url, forms, fileForms) {
 		return axios.post(url, form, {headers: headers,maxContentLength: Infinity})
 }
 
-async function jsonToMap(jsonStr){
-	let obj = JSON.parse(jsonStr);
+function objToStringMap(obj){
 	let strMap = new Map();
-	
+
 	for (let k of Object.keys(obj))
-		strMap.set(k, obj[k]);
+	  strMap.set(k,obj[k]);
 
 	return strMap;
 }
