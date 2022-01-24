@@ -52,7 +52,7 @@ async function uploadArtifact(meta, artifactPath, url, key){
 }
 
 async function uploadFile(url, forms, fileForms) {
-	const form = buildForm(forms, fileForms);
+	const form = await buildForm(forms, fileForms);
 	const headers = await getFormHeaders(form);
 
 	return axios.post(url, form, {
