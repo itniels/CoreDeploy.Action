@@ -14048,9 +14048,9 @@ const fs = __nccwpck_require__(5747);
 const {promisify} = __nccwpck_require__(1669);
 
 async function uploadArtifact(meta, artifactPath, url, key){
-	core.info('Starting upload of artifact');
-
 	try {
+		core.info('Starting upload of artifact');
+
 		// Create meta form
 		const forms = {
 			key: key,

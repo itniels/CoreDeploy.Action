@@ -5,9 +5,9 @@ const fs = require('fs');
 const {promisify} = require('util');
 
 async function uploadArtifact(meta, artifactPath, url, key){
-	core.info('Starting upload of artifact');
-
 	try {
+		core.info('Starting upload of artifact');
+
 		// Create meta form
 		const forms = {
 			key: key,
