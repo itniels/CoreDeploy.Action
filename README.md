@@ -1,8 +1,8 @@
 # CoreDeploy.Action
-GitHub Action for integrating with CoreDeploy server
+GitHub Action for integrating with CoreDeploy server.
 
 ## What is CoreDeploy 
-It is my own custom artifact storage and deployment tool, not available for public.
+Is an Artifact and deploy server, using agents to deliver software to destinations.
 
 ## Usage
 You need two secrets added, Url to CoreDeploy `${{secrets.COREDEPLOY_URL}}` and ingress key for authorization `${{secrets.COREDEPLOY_INGRESSKEY}}`.
