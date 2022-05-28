@@ -2,7 +2,9 @@
 GitHub Action for integrating with CoreDeploy server.
 
 ## What is CoreDeploy 
-Is an Artifact and deploy server, using agents to deliver software to destinations.
+Is an Artifact and deploy server, using agents to deliver software to various destinations.
+
+CoreDeploy is a private project that is currently only developed and used by myself.
 
 ## Usage
 You need two secrets added, Url to CoreDeploy `${{secrets.COREDEPLOY_URL}}` and ingress key for authorization `${{secrets.COREDEPLOY_INGRESSKEY}}`.
