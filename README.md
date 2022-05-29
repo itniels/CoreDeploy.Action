@@ -41,3 +41,7 @@ In your build add as a step like this:
 1) Make changes to code
 2) run `npm install` which will update node_modules and run ncc to build dist
 3) Push changes to github to deploy
+
+## Troubleshooting
+### 'ncc' is not recognized as an internal or external command
+Make sure you have ncc installed: `npm i -g @vercel/ncc`
