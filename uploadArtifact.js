@@ -57,7 +57,8 @@ async function uploadFile(url, forms, fileForms) {
 
 	return axios.post(url, form, {
 		headers: headers, 
-		maxContentLength: Infinity
+		maxContentLength: Infinity,
+		maxBodyLength: Infinity
 	});
 }
 
