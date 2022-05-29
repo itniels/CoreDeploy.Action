@@ -39,5 +39,5 @@ In your build add as a step like this:
 
 ## How to update and compile the action
 1) Make changes to code
-2) run `npm install` which will update node_modules and run ncc to build dist
+2) run `npm install` which will update node_modules and it will run ncc to build dist
 3) Push changes to github to deploy
